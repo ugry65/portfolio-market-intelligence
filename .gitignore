@@ -1,0 +1,43 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+dist/
+build/
+coverage/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Runtime and local data
+logs/
+cache/
+tmp/
+data/raw/
+data/private/
+*.sqlite
+*.sqlite3
+
+# Portfolio exports containing personal data
+portfolio_dashboard_data.json
+dashboard-data.json
+manual_prices.csv
+manual_fx_rates.csv
