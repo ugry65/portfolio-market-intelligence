@@ -1,0 +1,18 @@
+{
+  "positions": [
+    {
+      "ticker": "ASML",
+      "name": "ASML Holding NV",
+      "weight": 0.12,
+      "aliases": ["ASML NV"],
+      "themes": ["semiconductor", "AI infrastructure"]
+    },
+    {
+      "ticker": "BTC",
+      "name": "Bitcoin",
+      "weight": 0.03,
+      "aliases": ["Bitcoin BTC"],
+      "themes": ["crypto", "digital asset"]
+    }
+  ]
+}
