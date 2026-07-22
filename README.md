@@ -16,6 +16,45 @@ A projekt feladata a piaci, makrogazdasági, híralapú és tematikus adatok ös
 - nincs automatikus vételi vagy eladási megbízás;
 - a meglévő `dashboard-data.json` séma csak külön architektúradöntéssel változhat.
 
+## Jelenlegi működő vertikális szelet
+
+```text
+SourceAdapter
+    ↓
+normalizált Signal + SourceStatus
+    ↓
+portfólióillesztés
+    ↓
+deduplikáció
+    ↓
+prioritási és alert-besorolás
+    ↓
+portfolio-intelligence.json export
+```
+
+A jelenlegi implementáció tartalmazza:
+
+- forrásadapter-szerződést és kontrollált statikus adaptert;
+- JSON- és CSV-portfólióbetöltést;
+- közvetlen ticker-, cégnév- és témakapcsolat felismerést;
+- determinisztikus, azonos napi esemény-deduplikációt;
+- adapterhibák megőrzését `SourceStatus` rekordként;
+- `information`, `watch` és `alert` besorolást;
+- determinisztikus JSON-exportot és unit teszteket.
+
+## Helyi futtatás
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+pytest
+ruff check .
+python scripts/generate_demo.py
+```
+
+A biztonságos portfólióbemeneti példa az `examples/portfolio.example.json` fájlban található. Valós portfólióadatot, API-kulcsot vagy szerverkonfigurációt nem szabad a repositoryba commitolni.
+
 ## Tervezett modulok
 
 ```text
@@ -48,6 +87,6 @@ Elsődleges stratégia:
 
 Részletek: [`docs/worldmonitor-adoption-audit.md`](docs/worldmonitor-adoption-audit.md)
 
-## Kezdeti státusz
+## Státusz
 
-A repository jelenleg kutatási és architekturális alap. Produkciós adatforrás, API-kulcs vagy személyes portfólióadat még nincs benne.
+A repository fejlesztési alapverzió. Produkciós adatforrás, API-kulcs vagy személyes portfólióadat még nincs benne.
